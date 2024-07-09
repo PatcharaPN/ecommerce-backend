@@ -4,4 +4,5 @@ export class CreateProductDto {
   readonly price: number;
   readonly rating?: number;
   imageUrl: string;
+  readonly store: string;
 }
