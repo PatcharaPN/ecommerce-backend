@@ -5,6 +5,8 @@ import {
   UseInterceptors,
   UploadedFile,
   Get,
+  Delete,
+  Param,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ProductsService } from './products.service';
@@ -44,5 +46,10 @@ export class ProductsController {
   @Get()
   findAll() {
     return this.productsService.findAll();
+  }
+
+  @Delete(':id')
+  async deleteById(@Param('id') id: string) {
+    return this.productsService.deleteById(id);
   }
 }

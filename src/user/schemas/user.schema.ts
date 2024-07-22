@@ -19,7 +19,7 @@ export class User {
   @Prop()
   userImage: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'Store', default: '' })
+  @Prop({ type: Types.ObjectId, ref: 'Store', default: [] })
   store: Types.ObjectId;
 
   @Prop()
