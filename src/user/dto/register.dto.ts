@@ -4,4 +4,5 @@ export class RegisterDTO {
   readonly username: string;
   userImage: string;
   role: 'merchant' | 'customer';
+  readonly store: string;
 }

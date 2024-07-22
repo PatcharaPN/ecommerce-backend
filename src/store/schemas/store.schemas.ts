@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { Product } from 'src/products/schemas/products.schemas';
+import { User } from 'src/user/schemas/user.schema';
 
 export type StoreDocument = Store & Document;
 
@@ -17,6 +18,9 @@ export class Store {
 
   @Prop()
   like: number;
+
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }] })
+  owner: Types.ObjectId;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'Product' }] })
   products: Product[];

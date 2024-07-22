@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import * as bcrypt from 'bcrypt';
+import { Store } from 'src/store/schemas/store.schemas';
 
 export type UserDocument = User & Document;
 
@@ -17,6 +18,9 @@ export class User {
 
   @Prop()
   userImage: string;
+
+  @Prop({ type: Types.ObjectId, ref: 'Store', default: '' })
+  store: Types.ObjectId;
 
   @Prop()
   role: 'merchant' | 'customer';
