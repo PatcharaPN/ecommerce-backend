@@ -19,6 +19,12 @@ export class Store {
   @Prop()
   like: number;
 
+  @Prop()
+  description: string;
+
+  @Prop()
+  storeimg: string;
+
   @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }] })
   owner: Types.ObjectId;
 

@@ -5,5 +5,7 @@ export class CreateStoreDto {
   readonly location?: string;
   readonly following: number;
   readonly like: number;
+  readonly description: string;
+  storeimg: string;
   owner: string;
 }

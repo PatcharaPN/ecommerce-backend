@@ -18,6 +18,9 @@ export class Product {
   @Prop()
   rating: number;
 
+  @Prop()
+  quantity: number;
+
   @Prop({ default: Date.now })
   createdAt: Date;
 

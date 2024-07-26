@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
+import mongoose, { Document, Types } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { Store } from 'src/store/schemas/store.schemas';
 
@@ -16,10 +16,10 @@ export class User {
   @Prop()
   username: string;
 
-  @Prop()
+  @Prop({ default: null })
   userImage: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'Store', default: [] })
+  @Prop({ type: Types.ObjectId, ref: 'Store', default: null })
   store: Types.ObjectId;
 
   @Prop()

@@ -13,10 +13,10 @@ export class StoresService {
     @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
   ) {}
 
-  async create(createStoreDto: CreateStoreDto): Promise<Store> {
+  async create(createStoreDto: CreateStoreDto): Promise<any> {
     const user = await this.userModel.findById(createStoreDto.owner);
     if (!user) {
-      throw new Error('User objectId not found');
+      throw new NotFoundException('User objectId not found');
     }
 
     const createdStore = new this.storeModel(createStoreDto);
@@ -27,12 +27,23 @@ export class StoresService {
     user.store = savedStore._id as Types.ObjectId;
     await user.save();
 
-    const updatedUser = await this.userModel
-      .findById(user._id)
-      .populate('store')
+    const populatedStore = await this.storeModel
+      .findById(savedStore._id)
+      .populate('owner')
       .exec();
 
-    return savedStore;
+    const response = {
+      _id: populatedStore._id,
+      name: populatedStore.name,
+      location: populatedStore.location,
+      owner: populatedStore.owner,
+      storeimg: populatedStore.storeimg,
+      description: populatedStore.description,
+      products: populatedStore.products,
+      __v: populatedStore.__v,
+    };
+
+    return response;
   }
 
   async findAll(): Promise<Store[]> {
