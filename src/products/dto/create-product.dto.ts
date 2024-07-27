@@ -4,6 +4,7 @@ export class CreateProductDto {
   readonly price: number;
   readonly rating?: number;
   readonly quantity: number;
+  readonly category: string;
   imageUrl: string;
   readonly store: string;
 }
