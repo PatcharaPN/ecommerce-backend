@@ -50,8 +50,8 @@ export class StoresService {
     return this.storeModel.find().exec();
   }
 
-  async findOne(id: string): Promise<Store | null> {
-    return this.storeModel.findById(id).exec();
+  async findOne(storeId: string): Promise<Store | null> {
+    return this.storeModel.findById(storeId).exec();
   }
 
   async likeStore(id: string): Promise<Store> {

@@ -10,6 +10,6 @@ import { UserController } from './user.controller';
   ],
   providers: [UserService],
   controllers: [UserController],
-  exports: [UserService, MongooseModule], // Export UserService for use in AuthModule
+  exports: [UserService, MongooseModule],
 })
 export class UserModule {}

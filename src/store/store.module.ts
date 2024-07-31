@@ -12,5 +12,6 @@ import { UserModule } from 'src/user/user.module';
   ],
   controllers: [StoresController],
   providers: [StoresService],
+  exports: [StoresService, MongooseModule],
 })
 export class StoreModule {}
